@@ -126,6 +126,7 @@ def test_paint_scale(MouseEvent):
 
 
 def test_erase(MouseEvent):
+    print('test labels mouse bindings')
     """Test erasing labels with different brush shapes."""
     data = np.ones((20, 20), dtype=np.int32)
     layer = Labels(data)

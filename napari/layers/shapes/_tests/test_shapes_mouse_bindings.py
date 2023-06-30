@@ -145,6 +145,7 @@ def test_add_simple_shape(shape_type, create_known_shapes_layer, Event):
 
 
 def test_polygon_lasso_tablet(create_known_shapes_layer, Event):
+    print('shapes/tests/test_shapes_mouse_bindings')
     """Draw polygon with tablet simulated by mouse drag event."""
     layer, n_shapes, known_non_shape = create_known_shapes_layer
     desired_shape = np.array([[20, 30], [10, 50], [60, 40], [80, 20]])

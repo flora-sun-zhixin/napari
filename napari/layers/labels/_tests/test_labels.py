@@ -935,6 +935,7 @@ def test_world_data_extent():
         )
     ),
 )
+print('test labels')
 def test_undo_redo(
     brush_size,
     mode,

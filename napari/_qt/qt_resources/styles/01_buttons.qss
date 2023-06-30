@@ -129,6 +129,10 @@ QtModeRadioButton[mode="polygon_lasso"]::indicator {
   image: url("theme_{{ id }}:/polygon_lasso.svg");
 }
 
+QtModeRadioButton[mode="my_test"]::indicator {
+  image: url("theme_{{ id }}:/my_test.svg");
+}
+
 QtModeRadioButton[mode="vertex_insert"]::indicator {
   image: url("theme_{{ id }}:/vertex_insert.svg");
 }
@@ -139,6 +143,10 @@ QtModeRadioButton[mode="vertex_remove"]::indicator {
 
 QtModeRadioButton[mode="paint"]::indicator {
   image: url("theme_{{ id }}:/paint.svg");
+}
+
+QtModeRadioButton[mode="mytry"]::indicator {
+  image: url("theme_{{ id }}:/mytry.svg");
 }
 
 QtModeRadioButton[mode="fill"]::indicator {

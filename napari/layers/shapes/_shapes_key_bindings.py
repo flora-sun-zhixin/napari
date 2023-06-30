@@ -87,9 +87,14 @@ def activate_add_polygon_mode(layer: Shapes):
 
 @register_shapes_mode_action(trans._('Add polygons lasso'))
 def activate_add_polygon_lasso_mode(layer: Shapes):
+    print('shapes/shapes_ket_bindings')
     """Activate add polygon tool."""
     layer.mode = Mode.ADD_POLYGON_LASSO
 
+@register_shapes_mode_action(trans._('Add my test'))
+def activate_add_my_test_mode(layer: Shapes):
+    """Activate add my test tool."""
+    layer.mode = Mode.ADD_MY_TEST
 
 @register_shapes_mode_action(trans._('Select vertices'))
 def activate_direct_mode(layer: Shapes):
@@ -124,6 +129,7 @@ shapes_fun_to_mode = [
     (activate_add_path_mode, Mode.ADD_PATH),
     (activate_add_polygon_mode, Mode.ADD_POLYGON),
     (activate_add_polygon_lasso_mode, Mode.ADD_POLYGON_LASSO),
+    (activate_add_my_test_mode, Mode.ADD_MY_TEST),
     (activate_direct_mode, Mode.DIRECT),
     (activate_select_mode, Mode.SELECT),
     (activate_vertex_insert_mode, Mode.VERTEX_INSERT),

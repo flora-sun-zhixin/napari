@@ -50,12 +50,16 @@ def activate_labels_picker_mode(layer: Labels):
 @register_label_mode_action(trans._("Activate the label eraser"))
 def activate_labels_erase_mode(layer: Labels):
     layer.mode = Mode.ERASE
-
+print('labels/labels key bindings act eraser')
+@register_label_mode_action(trans._("Activate the label mytry"))
+def activate_labels_mytry_mode(layer: Labels):
+    layer.mode = Mode.MYTRY
 
 labels_fun_to_mode = [
     (activate_labels_pan_zoom_mode, Mode.PAN_ZOOM),
     (activate_labels_transform_mode, Mode.TRANSFORM),
     (activate_labels_erase_mode, Mode.ERASE),
+    (activate_labels_mytry_mode, Mode.MYTRY),
     (activate_labels_paint_mode, Mode.PAINT),
     (activate_labels_fill_mode, Mode.FILL),
     (activate_labels_picker_mode, Mode.PICK),

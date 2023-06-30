@@ -197,6 +197,10 @@ class QtLabelsControls(QtLayerControls):
             'napari:activate_labels_paint_mode', self.paint_button
         )
 
+        self.mytry_button = QtModeRadioButton(layer, 'mytry', Mode.MYTRY)
+        action_manager.bind_button(
+            'napari:activate_labels_mytry_mode', self.mytry_button
+        )
         self.fill_button = QtModeRadioButton(
             layer,
             'fill',
@@ -224,11 +228,13 @@ class QtLabelsControls(QtLayerControls):
             self.pick_button,
             self.fill_button,
             self.erase_button,
+            self.mytry_button,
         )
 
         self.button_group = QButtonGroup(self)
         self.button_group.addButton(self.panzoom_button)
         self.button_group.addButton(self.paint_button)
+        self.button_group.addButton(self.mytry_button)
         self.button_group.addButton(self.pick_button)
         self.button_group.addButton(self.fill_button)
         self.button_group.addButton(self.erase_button)
@@ -239,6 +245,7 @@ class QtLabelsControls(QtLayerControls):
         button_row.addWidget(self.colormapUpdate)
         button_row.addWidget(self.erase_button)
         button_row.addWidget(self.paint_button)
+        button_row.addWidget(self.mytry_button)
         button_row.addWidget(self.fill_button)
         button_row.addWidget(self.pick_button)
         button_row.addWidget(self.panzoom_button)
@@ -315,6 +322,8 @@ class QtLabelsControls(QtLayerControls):
             self.pick_button.setChecked(True)
         elif mode == Mode.PAINT:
             self.paint_button.setChecked(True)
+        elif mode == Mode.MYTRY:
+            self.mytry_button.setChecked(True)
         elif mode == Mode.FILL:
             self.fill_button.setChecked(True)
         elif mode == Mode.ERASE:

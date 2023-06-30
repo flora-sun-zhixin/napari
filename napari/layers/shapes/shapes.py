@@ -26,6 +26,7 @@ from napari.layers.shapes._shapes_mouse_bindings import (
     add_line,
     add_path_polygon,
     add_path_polygon_lasso,
+    add_path_my_test,
     add_rectangle,
     finish_drawing_shape,
     highlight,
@@ -34,6 +35,7 @@ from napari.layers.shapes._shapes_mouse_bindings import (
     vertex_insert,
     vertex_remove,
 )
+print('shapes/shapes')
 from napari.layers.shapes._shapes_utils import (
     create_box,
     extract_shape_type,
@@ -340,6 +342,7 @@ class Shapes(Layer):
         Mode.ADD_PATH: add_path_polygon,
         Mode.ADD_POLYGON: add_path_polygon,
         Mode.ADD_POLYGON_LASSO: add_path_polygon_lasso,
+        Mode.ADD_MY_TEST: add_path_my_test,
     }
 
     _move_modes = {
@@ -355,6 +358,7 @@ class Shapes(Layer):
         Mode.ADD_PATH: polygon_creating,
         Mode.ADD_POLYGON: polygon_creating,
         Mode.ADD_POLYGON_LASSO: polygon_creating,
+        Mode.ADD_MY_TEST: no_op,
     }
 
     _double_click_modes = {
@@ -370,6 +374,7 @@ class Shapes(Layer):
         Mode.ADD_PATH: finish_drawing_shape,
         Mode.ADD_POLYGON: finish_drawing_shape,
         Mode.ADD_POLYGON_LASSO: no_op,
+        Mode.ADD_MY_TEST: no_op,
     }
 
     _cursor_modes = {
@@ -385,6 +390,7 @@ class Shapes(Layer):
         Mode.ADD_PATH: 'cross',
         Mode.ADD_POLYGON: 'cross',
         Mode.ADD_POLYGON_LASSO: 'cross',
+        Mode.ADD_MY_TEST: 'cross',
     }
 
     _interactive_modes = {
@@ -2409,6 +2415,7 @@ class Shapes(Layer):
                     Mode.ADD_PATH,
                     Mode.ADD_POLYGON,
                     Mode.ADD_POLYGON_LASSO,
+                    Mode.ADD_MY_TEST,
                     Mode.ADD_RECTANGLE,
                     Mode.ADD_ELLIPSE,
                     Mode.ADD_LINE,

@@ -2,8 +2,10 @@ from napari.layers.labels._labels_constants import Mode
 from napari.layers.labels._labels_utils import mouse_event_to_labels_coordinate
 from napari.settings import get_settings
 
+from napari.layers.labels.readInData import plotCT
 
 def draw(layer, event):
+
     """Draw with the currently selected label to a coordinate.
 
     This method have different behavior when draw is called
@@ -26,7 +28,7 @@ def draw(layer, event):
     # Do not allow drawing while adjusting the brush size with the mouse
     if layer.cursor == 'circle_frozen':
         return
-
+    print('labels/labels mouse bindings')
     coordinates = mouse_event_to_labels_coordinate(layer, event)
     if layer._mode == Mode.ERASE:
         new_label = layer._background_label
@@ -50,6 +52,7 @@ def draw(layer, event):
 
 def pick(layer, event):
     """Change the selected label to the same as the region clicked."""
+    print('pick')
     # on press
     layer.selected_label = (
         layer.get_value(
@@ -61,6 +64,9 @@ def pick(layer, event):
         or 0
     )
 
+def mytry(layer, event):
+    print('mytry')
+    plotCT()
 
 class BrushSizeOnMouseMove:
     """Enables changing the brush size by moving the mouse while holding down the specified modifiers

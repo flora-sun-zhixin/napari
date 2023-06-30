@@ -5,6 +5,13 @@ from typing import TYPE_CHECKING
 
 import numpy as np
 
+#import sys
+
+# #sys.path.append(...)
+# sys.path.insert(0,'.')
+#print(sys.path)
+#from examples import readInData
+from napari.layers.shapes.readInData import plotCT
 from napari.layers.shapes._shapes_constants import Box, Mode
 from napari.layers.shapes._shapes_models import (
     Ellipse,
@@ -301,6 +308,7 @@ def initiate_polygon_draw(
 
 
 def add_path_polygon_lasso(layer: Shapes, event: MouseEvent) -> None:
+    print('shapes/shapes_mouse_bindings')
     """Add, draw and finish drawing of polygon.
 
     Initiates, draws and finishes the lasso polygon in drag mode (tablet) or
@@ -335,6 +343,30 @@ def add_path_polygon_lasso(layer: Shapes, event: MouseEvent) -> None:
         # This code block is responsible for finishing drawing in mouse draw mode
         layer._finish_drawing()
 
+def add_path_my_test(layer: Shapes, event: MouseEvent) -> None:
+    print('my test !')
+    plotCT()
+    # # on press
+    # coordinates = layer.world_to_data(event.position)
+    # if layer._is_creating is False:
+    #     # Set last cursor position to initial position of the mouse when starting to draw the shape
+    #     layer._last_cursor_position = np.array(event.pos)
+    #
+    #     # Start drawing a path
+    #     initiate_polygon_draw(layer, coordinates)
+    #     yield
+    #
+    #     while event.type == 'mouse_move':
+    #         polygon_creating(layer, event)
+    #         yield
+    #     index = layer._moving_value[0]
+    #     vertices = layer._data_view.shapes[index].data
+    #     # If number of vertices is higher than 2, tablet draw mode is assumed and shape is finished upon mouse release
+    #     if len(vertices) > 2:
+    #         layer._finish_drawing()
+    # else:
+    #     # This code block is responsible for finishing drawing in mouse draw mode
+    #     layer._finish_drawing()
 
 def add_vertex_to_path(
     layer: Shapes,
