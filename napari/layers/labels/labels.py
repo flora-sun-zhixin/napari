@@ -23,7 +23,7 @@ from napari.layers.labels._labels_mouse_bindings import (
     BrushSizeOnMouseMove,
     draw,
     pick,
-    mytry,
+    # mytry,
 )
 from napari.layers.labels._labels_utils import (
     expand_slice,
@@ -216,7 +216,7 @@ class Labels(_ImageBase):
     """
 
     _modeclass = Mode
-    print('labels/labels')
+    # print('labels/labels')
     _drag_modes = {
         Mode.PAN_ZOOM: no_op,
         Mode.TRANSFORM: transform_with_box,
@@ -224,7 +224,7 @@ class Labels(_ImageBase):
         Mode.PAINT: draw,
         Mode.FILL: draw,
         Mode.ERASE: draw,
-        Mode.MYTRY: mytry,
+        # Mode.MYTRY: mytry,
     }
 
     brush_size_on_mouse_move = BrushSizeOnMouseMove(min_brush_size=1)
@@ -236,7 +236,7 @@ class Labels(_ImageBase):
         Mode.PAINT: brush_size_on_mouse_move,
         Mode.FILL: no_op,
         Mode.ERASE: brush_size_on_mouse_move,
-        Mode.MYTRY: no_op,
+        # Mode.MYTRY: no_op,
     }
     _cursor_modes = {
         Mode.PAN_ZOOM: 'standard',
@@ -245,7 +245,7 @@ class Labels(_ImageBase):
         Mode.PAINT: 'circle',
         Mode.FILL: 'cross',
         Mode.ERASE: 'circle',
-        Mode.MYTRY: 'cross',
+        # Mode.MYTRY: 'cross',
     }
 
     _history_limit = 100

@@ -36,9 +36,9 @@ class Mode(StringEnum):
     PAINT = auto()
     FILL = auto()
     ERASE = auto()
-    MYTRY = auto()
+    # MYTRY = auto()
 
-print('labels constants')
+#print('labels constants')
 class LabelColorMode(StringEnum):
     """
     LabelColorMode: Labelling Color setting mode.

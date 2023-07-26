@@ -236,6 +236,14 @@ QLabel#Shapes {
   image: url("theme_{{ id }}:/new_shapes.svg");
 }
 
+QLabel#Shapes {
+  image: url("theme_{{ id }}:/read_ctpet.svg");
+}
+
+QLabel#Shapes {
+  image: url("theme_{{ id }}:/read_masks.svg");
+}
+
 QLabel#Points {
   image: url("theme_{{ id }}:/new_points.svg");
 }

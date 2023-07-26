@@ -76,7 +76,17 @@ class QtLayerButtons(QFrame):
         self.newLabelsButton = QtViewerPushButton(
             'new_labels',
             trans._('New labels layer'),
-            lambda: self.viewer._new_labels(),
+            lambda: self.viewer._new_labels(), #here i temporarily change its function to my own
+        )
+        self.readCTPETButton = QtViewerPushButton(
+            'read_ctpet',
+            trans._('Read CT and PET'),
+            lambda: self.viewer._insert_ctpet(),  # here i temporarily change its function to my own
+        )
+        self.readMasksButton = QtViewerPushButton(
+            'read_masks',
+            trans._('Read mask layers'),
+            lambda: self.viewer._insert_labels(), #here i temporarily change its function to my own
         )
 
         layout = QHBoxLayout()
@@ -84,8 +94,11 @@ class QtLayerButtons(QFrame):
         layout.addWidget(self.newPointsButton)
         layout.addWidget(self.newShapesButton)
         layout.addWidget(self.newLabelsButton)
+        layout.addWidget(self.readCTPETButton)
+        layout.addWidget(self.readMasksButton)
         layout.addStretch(0)
         layout.addWidget(self.deleteButton)
+        #layout.addRow(self.renderLabel, self.renderComboBox)
         self.setLayout(layout)
 
 

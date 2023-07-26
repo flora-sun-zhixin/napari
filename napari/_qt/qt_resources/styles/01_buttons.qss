@@ -18,6 +18,16 @@ QtViewerPushButton[mode="new_points"] {
   image: url("theme_{{ id }}:/new_points.svg");
 }
 
+QtViewerPushButton[mode="read_ctpet"] {
+  image: url("theme_{{ id }}:/read_ctpet.svg");
+}
+
+QtViewerPushButton[mode="read_masks"] {
+  image: url("theme_{{ id }}:/read_masks.svg");
+}
+
+
+
 QtViewerPushButton[mode="new_shapes"] {
   image: url("theme_{{ id }}:/new_shapes.svg");
 }

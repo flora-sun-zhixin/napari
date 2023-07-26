@@ -308,7 +308,7 @@ def initiate_polygon_draw(
 
 
 def add_path_polygon_lasso(layer: Shapes, event: MouseEvent) -> None:
-    print('shapes/shapes_mouse_bindings')
+#    print('shapes/shapes_mouse_bindings')
     """Add, draw and finish drawing of polygon.
 
     Initiates, draws and finishes the lasso polygon in drag mode (tablet) or

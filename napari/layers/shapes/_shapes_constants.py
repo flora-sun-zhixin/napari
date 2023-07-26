@@ -39,7 +39,7 @@ class Mode(StringEnum):
     ADD_PATH = auto()
     ADD_POLYGON = auto()
     ADD_POLYGON_LASSO = auto()
-    print('shapes/constants')
+    # print('shapes/constants')
     ADD_MY_TEST = auto()
     VERTEX_INSERT = auto()
     VERTEX_REMOVE = auto()

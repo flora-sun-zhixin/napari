@@ -9,6 +9,7 @@ from napari.layers.utils.layer_utils import (
 )
 from napari.utils.translations import trans
 
+
 MIN_BRUSH_SIZE = 1
 MAX_BRUSH_SIZE = 40
 
@@ -50,16 +51,22 @@ def activate_labels_picker_mode(layer: Labels):
 @register_label_mode_action(trans._("Activate the label eraser"))
 def activate_labels_erase_mode(layer: Labels):
     layer.mode = Mode.ERASE
-print('labels/labels key bindings act eraser')
-@register_label_mode_action(trans._("Activate the label mytry"))
-def activate_labels_mytry_mode(layer: Labels):
-    layer.mode = Mode.MYTRY
+# print('labels/labels key bindings act eraser')
+# @register_label_mode_action(trans._("Activate the label mytry"))
+# def activate_labels_mytry_mode(layer: Labels):
+#     layer.mode = Mode.MYTRY
+    # #viewer.layers.insert(self, index=0, value = np.zeros(5))
+    # layer_a = np.random.random((10, 10))
+    # layer_b = np.random.random((15, 15))
+    #
+    # layer.insert(0, layer_b)
+
 
 labels_fun_to_mode = [
     (activate_labels_pan_zoom_mode, Mode.PAN_ZOOM),
     (activate_labels_transform_mode, Mode.TRANSFORM),
     (activate_labels_erase_mode, Mode.ERASE),
-    (activate_labels_mytry_mode, Mode.MYTRY),
+    # (activate_labels_mytry_mode, Mode.MYTRY),
     (activate_labels_paint_mode, Mode.PAINT),
     (activate_labels_fill_mode, Mode.FILL),
     (activate_labels_picker_mode, Mode.PICK),

@@ -21,7 +21,6 @@ from typing import (
 
 import numpy as np
 from pydantic import Extra, Field, PrivateAttr, validator
-
 from napari import layers
 from napari.components._layer_slicer import _LayerSlicer
 from napari.components._viewer_mouse_bindings import dims_scroll
@@ -82,6 +81,7 @@ from napari.utils.mouse_bindings import MousemapProvider
 from napari.utils.progress import progress
 from napari.utils.theme import available_themes, is_theme_available
 from napari.utils.translations import trans
+from napari.components.CodeFromFlora.readInData import plotCT
 
 DEFAULT_THEME = 'dark'
 EXCLUDE_DICT = {
@@ -406,6 +406,29 @@ class ViewerModel(KeymapProvider, MousemapProvider, EventedModel):
         ]
         empty_labels = np.zeros(shape, dtype=int)
         self.add_labels(empty_labels, translate=np.array(corner), scale=scale)
+    def _insert_ctpet(self):
+        layers_extent = self.layers.extent
+        extent = layers_extent.world
+        scale = layers_extent.step
+        scene_size = extent[1] - extent[0]
+        corner = extent[0]
+        M, largePET = plotCT(cponly=True)
+        self.add_image(M, translate=np.array(corner), scale=scale, name='CT')
+        self.add_image(largePET, translate=np.array(corner), scale=scale, opacity=0.5, gamma=0.5, name='PET', colormap='inferno')
+
+    def _insert_labels(self):
+        layers_extent = self.layers.extent
+        extent = layers_extent.world
+        scale = layers_extent.step
+        scene_size = extent[1] - extent[0]
+        corner = extent[0]
+        maskcode = plotCT(cponly=False)
+        # self.add_image(M, translate=np.array(corner), scale=scale, name='CT')
+        # # self.add_image(largePET, translate=np.array(corner), scale=scale, opacity=0.5, gamma=0.5, name='PET', colormap='inferno')
+        self.add_labels(maskcode[:, :, : ,1].astype('int64'), translate=np.array(corner), scale=scale, name='spine')
+        self.add_labels(maskcode[:, :, :, 2].astype('int64'), translate=np.array(corner), scale=scale, name='rt_femur')
+        self.add_labels(maskcode[:, :, :, 3].astype('int64'), translate=np.array(corner), scale=scale, name='lf_femur')
+        self.add_labels(maskcode[:, :, :, 4].astype('int64'), translate=np.array(corner), scale=scale, name='pelvis')
 
     def _on_layer_reload(self, event: Event) -> None:
         self._layer_slicer.submit(

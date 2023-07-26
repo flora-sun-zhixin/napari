@@ -87,7 +87,7 @@ def activate_add_polygon_mode(layer: Shapes):
 
 @register_shapes_mode_action(trans._('Add polygons lasso'))
 def activate_add_polygon_lasso_mode(layer: Shapes):
-    print('shapes/shapes_ket_bindings')
+#    print('shapes/shapes_ket_bindings')
     """Activate add polygon tool."""
     layer.mode = Mode.ADD_POLYGON_LASSO
 

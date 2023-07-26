@@ -35,7 +35,7 @@ from napari.layers.shapes._shapes_mouse_bindings import (
     vertex_insert,
     vertex_remove,
 )
-print('shapes/shapes')
+#print('shapes/shapes')
 from napari.layers.shapes._shapes_utils import (
     create_box,
     extract_shape_type,

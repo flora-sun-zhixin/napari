@@ -28,7 +28,7 @@ def draw(layer, event):
     # Do not allow drawing while adjusting the brush size with the mouse
     if layer.cursor == 'circle_frozen':
         return
-    print('labels/labels mouse bindings')
+#    print('labels/labels mouse bindings')
     coordinates = mouse_event_to_labels_coordinate(layer, event)
     if layer._mode == Mode.ERASE:
         new_label = layer._background_label
@@ -64,9 +64,9 @@ def pick(layer, event):
         or 0
     )
 
-def mytry(layer, event):
-    print('mytry')
-    plotCT()
+# def mytry(layer, event):
+#     print('mytry')
+#     plotCT()
 
 class BrushSizeOnMouseMove:
     """Enables changing the brush size by moving the mouse while holding down the specified modifiers
