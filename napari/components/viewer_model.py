@@ -429,6 +429,8 @@ class ViewerModel(KeymapProvider, MousemapProvider, EventedModel):
         self.add_labels(maskcode[:, :, :, 2].astype('int64'), translate=np.array(corner), scale=scale, name='rt_femur')
         self.add_labels(maskcode[:, :, :, 3].astype('int64'), translate=np.array(corner), scale=scale, name='lf_femur')
         self.add_labels(maskcode[:, :, :, 4].astype('int64'), translate=np.array(corner), scale=scale, name='pelvis')
+        self.add_labels(maskcode[:, :, :, 5].astype('int64'), translate=np.array(corner), scale=scale, name='otherbone')
+        self.add_labels(maskcode[:, :, :, 6].astype('int64'), translate=np.array(corner), scale=scale, name='overlap')
 
     def _on_layer_reload(self, event: Event) -> None:
         self._layer_slicer.submit(
