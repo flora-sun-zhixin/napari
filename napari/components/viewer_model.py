@@ -412,26 +412,30 @@ class ViewerModel(KeymapProvider, MousemapProvider, EventedModel):
         scale = layers_extent.step
         scene_size = extent[1] - extent[0]
         corner = extent[0]
+        global M, largePET
         M, largePET = plotCT(cponly=True)
         self.add_image(M, translate=np.array(corner), scale=scale, name='CT')
         self.add_image(largePET, translate=np.array(corner), scale=scale, opacity=0.5, gamma=0.5, name='PET', colormap='inferno')
 
     def _insert_labels(self):
-        layers_extent = self.layers.extent
-        extent = layers_extent.world
-        scale = layers_extent.step
-        scene_size = extent[1] - extent[0]
-        corner = extent[0]
-        maskcode = plotCT(cponly=False)
-        # self.add_image(M, translate=np.array(corner), scale=scale, name='CT')
-        # # self.add_image(largePET, translate=np.array(corner), scale=scale, opacity=0.5, gamma=0.5, name='PET', colormap='inferno')
-        self.add_labels(maskcode[:, :, : ,1].astype('int64'), translate=np.array(corner), scale=scale, name='spine')
-        self.add_labels(maskcode[:, :, :, 2].astype('int64'), translate=np.array(corner), scale=scale, name='rt_femur')
-        self.add_labels(maskcode[:, :, :, 3].astype('int64'), translate=np.array(corner), scale=scale, name='lf_femur')
-        self.add_labels(maskcode[:, :, :, 4].astype('int64'), translate=np.array(corner), scale=scale, name='pelvis')
-        self.add_labels(maskcode[:, :, :, 5].astype('int64'), translate=np.array(corner), scale=scale, name='otherbone')
-        self.add_labels(maskcode[:, :, :, 6].astype('int64'), translate=np.array(corner), scale=scale, name='overlap')
-
+        try:
+            ctData = globals()['M']
+            layers_extent = self.layers.extent
+            extent = layers_extent.world
+            scale = layers_extent.step
+            scene_size = extent[1] - extent[0]
+            corner = extent[0]
+            maskcode = plotCT(cponly=False,M = ctData)
+            # self.add_image(M, translate=np.array(corner), scale=scale, name='CT')
+            # # self.add_image(largePET, translate=np.array(corner), scale=scale, opacity=0.5, gamma=0.5, name='PET', colormap='inferno')
+            self.add_labels(maskcode[:, :, : ,1].astype('int64'), translate=np.array(corner), scale=scale, name='spine')
+            self.add_labels(maskcode[:, :, :, 2].astype('int64'), translate=np.array(corner), scale=scale, name='rt_femur')
+            self.add_labels(maskcode[:, :, :, 3].astype('int64'), translate=np.array(corner), scale=scale, name='lf_femur')
+            self.add_labels(maskcode[:, :, :, 4].astype('int64'), translate=np.array(corner), scale=scale, name='pelvis')
+            self.add_labels(maskcode[:, :, :, 5].astype('int64'), translate=np.array(corner), scale=scale, name='otherbone')
+            self.add_labels(maskcode[:, :, :, 6].astype('int64'), translate=np.array(corner), scale=scale, name='overlap')
+        except KeyError:
+            print('please input CT first!')
     def _on_layer_reload(self, event: Event) -> None:
         self._layer_slicer.submit(
             layers=[event.layer], dims=self.dims, force=True
