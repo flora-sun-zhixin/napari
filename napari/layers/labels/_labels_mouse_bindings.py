@@ -2,7 +2,7 @@ from napari.layers.labels._labels_constants import Mode
 from napari.layers.labels._labels_utils import mouse_event_to_labels_coordinate
 from napari.settings import get_settings
 
-from napari.layers.labels.readInData import plotCT
+from napari.components.CodeFromFlora.readInData import plotCT
 
 def draw(layer, event):
 
