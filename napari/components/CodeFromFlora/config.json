@@ -1,3 +1,51 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:e67f87966c203bb7c7497e3b1f8f1b02eb530dafabd0daecfc707bfba761c881
-size 1004
+{
+    "root_path": "/project/cigserver1/export/zhixin.sun/Segmentation",
+    "code_path": "/project/cigserver1/export/zhixin.sun/Segmentation/SegCode",
+
+    "setting": {
+	"gpu_index": "0"
+    },
+
+    "dataset": {
+	"ic": 1,
+	"oc": 7,
+	"positionalEncoding": 8,
+	"padding": [[0, 0], [0, 0]],
+	"patch_training": false,
+	"dataRange": [],
+	"patch_size": []
+    },
+
+    "model": {
+	"network": "Unet2D-attn-SlcPosEncoding-Overlap-80-continue",
+	"depth": 5,
+	"start_exp": 6,
+	"num_conv": 2
+    },
+
+    "train": {
+	"epochs": 1500,
+	"warmup_epoch": 30,
+	"start_lr": 5e-6,
+	"warmup_lr": 7e-6,
+	"end_lr": 1e-6,
+	"batch_size": 3,
+	"save_epoch": 5
+    },
+
+    "keep_training": {
+	"load_path": "/project/cigserver5/export1/zhixin.sun/Segmentation/Experiements/01-May-2023-12-07-28_Unet2D-attn-SlcPosEncoding-Overlap-6080_depth_5_fullData/logs/ckp",
+	"is_restore": true,
+	"continue_epoch": 1000
+    },
+
+    "valid": {
+	"batch_size": 10
+    },
+
+    "test": {
+	"batch_size": 1,
+	"model_path": "",
+	"model_file": ""
+    }
+}
