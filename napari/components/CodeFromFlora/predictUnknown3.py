@@ -3,15 +3,16 @@ import os
 import sys
 import copy
 import shutil
+from pathlib import Path
 import json
 from glob import glob
 from pathlib import Path
 from datetime import datetime
 import pydicom
 import matplotlib.pyplot as plt
-loadpath = '/Users/laurayu/Desktop/CV/napari/napari/components/CodeFromFlora'
-# loadpath = str(Path().resolve().absolute())
-print(loadpath)
+
+loadpath = str(Path().resolve().absolute() / 'napari/components/CodeFromFlora')
+
 with open(os.path.join(loadpath, "config.json")) as File:
     config = json.load(File)
 
